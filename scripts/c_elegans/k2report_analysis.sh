@@ -1,11 +1,11 @@
 #!/bin/bash
 
 #SBATCH -J KrakenBracken
-#SBATCH -A eande106
+#SBATCH -A mschatz1
 #SBATCH -p parallel
-#SBATCH -t 12:00:00
+#SBATCH -t 1:00:00
 #SBATCH -N 1
-#SBATCH -n 10
+#SBATCH -n 4
 #SBATCH --mail-user=loconn13@jh.edu
 #SBATCH --mail-type=END
 #SBATCH --output=/vast/eande106/projects/Lance/THESIS_WORK/pathogen_unalignedBAM_SDSU/processed_data/SLURM_output/initial_krakenBracken_run/initialRun.oe  
@@ -45,7 +45,7 @@ for strain in "$k2reports"/*.k2report; do
             found_genus=0
         }s
     ' $strain >> $Kraken_class_file
-    if grep -q "$strain_name" "$Kraken_class_file"; then
+    if grep -qw "$strain_name" "$Kraken_class_file"; then
             hits_found=1
     fi
     if [[ $hits_found -eq 0 ]]; then
@@ -67,7 +67,7 @@ if [[ $1 == "control" ]]; then
                 found_genus=0
             }
         ' $strain >> $Kraken_class_file
-        if grep -q "$strain_name" "$Kraken_class_file"; then
+        if grep -qw "$strain_name" "$Kraken_class_file"; then
             hits_found=1
         fi
         if [[ $hits_found -eq 0 ]]; then
@@ -87,7 +87,7 @@ if [[ $1 == "control" ]]; then
                 found_genus=0
             }
         ' $strain >> $Kraken_class_file
-        if grep -q "$strain_name" "$Kraken_class_file"; then
+        if grep -qw "$strain_name" "$Kraken_class_file"; then
             hits_found=1
         fi
         if [[ $hits_found -eq 0 ]]; then
