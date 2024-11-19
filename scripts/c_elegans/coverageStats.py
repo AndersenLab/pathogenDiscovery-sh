@@ -29,8 +29,8 @@ NAstrainCount = len(NA_strainCov['strain_name'])
 genStrainCount = len(allGeneraCov['strain_name'])
 stringStrainCount = len(stringentGeneraCov['strain_name'])
 
-min_val = min(NA_strainCov['coverage'].min(), allGeneraCov['coverage'].min(), stringentGeneraCov['coverage'].min())
 max_val = max(NA_strainCov['coverage'].max(), allGeneraCov['coverage'].max(), stringentGeneraCov['coverage'].max())
+min_val = min(NA_strainCov['coverage'].min(), allGeneraCov['coverage'].min(), stringentGeneraCov['coverage'].min())
 bins = np.linspace(min_val, max_val, 30)  #30 bins
 
 # between NA and all genera identified
